@@ -34,7 +34,7 @@ class Application extends CI_Controller {
         $this->load->helper("url");
         $this->load->helper('form');
         $this->load->helper('text');
-        $this->_seccion_auto(9);
+        // $this->_seccion_auto(9);
 
 
         
@@ -46,6 +46,6 @@ class Application extends CI_Controller {
 
 	public function index()
 	{
-        echo "Entraste"
+        echo "Entraste";
 	}
 }

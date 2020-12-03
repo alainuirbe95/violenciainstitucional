@@ -200,12 +200,24 @@ def enviar_resultado(result):
 
     qmarks =', '.join([ '%s']* len(result))
     columns=', '.join(result.keys())
-    qry = "Insert Into RESPUESTAS (%s) Values (%s)" % (columns, qmarks)
-    mycursor.execute(qry, list(result.values()))
-    cnx.commit()
+
+    mycursor.execute("SELECT * FROM RESPUESTAS WHERE numero_control = %s" % (result['numero_control'])) 
+    myresult = list(mycursor)
+
+    if(len(myresult)==0):
+        qry = "Insert Into RESPUESTAS (%s) Values (%s)" % (columns, qmarks)
+        mycursor.execute(qry, list(result.values()))
+        cnx.commit()
+    else:
+        result1=result.copy()
+        del result1['numero_control']
+        qry = "UPDATE RESPUESTAS SET {}".format(', '.join('{}=%s'.format(k) for k in result1))+" WHERE numero_control = %s" % (result['numero_control'])
+        mycursor.execute(qry, list(result1.values()))
+        cnx.commit()
 
     mycursor.close()
     cnx.close()
+    
 lst = json.loads(sys.argv[1])
 # lst = [{"id_pregunta_respondida":"60","numero_control":"14330618","id_pregunta":"1","_0":"1","_1":"1","_2":"1","_3":"1"},{"id_pregunta_respondida":"61","numero_control":"14330618","id_pregunta":"2","_0":"1","_1":"2","_2":"2","_3":"2"},{"id_pregunta_respondida":"62","numero_control":"14330618","id_pregunta":"3","_0":"1","_1":"3","_2":"3","_3":"3"},{"id_pregunta_respondida":"63","numero_control":"14330618","id_pregunta":"4","_0":"1","_1":"4","_2":"4","_3":"4"},{"id_pregunta_respondida":"64","numero_control":"14330618","id_pregunta":"5","_0":"1","_1":"5","_2":"5","_3":"5"},{"id_pregunta_respondida":"65","numero_control":"14330618","id_pregunta":"6","_0":"1","_1":"6","_2":"6","_3":"6"},{"id_pregunta_respondida":"66","numero_control":"14330618","id_pregunta":"7","_0":"1","_1":"7","_2":"7","_3":"7"},{"id_pregunta_respondida":"67","numero_control":"14330618","id_pregunta":"8","_0":"1","_1":"8","_2":"8","_3":"1"},{"id_pregunta_respondida":"68","numero_control":"14330618","id_pregunta":"9","_0":"1","_1":"9","_2":"9","_3":"1"},{"id_pregunta_respondida":"69","numero_control":"14330618","id_pregunta":"10","_0":"1","_1":"10","_2":"10","_3":"1"},{"id_pregunta_respondida":"70","numero_control":"14330618","id_pregunta":"11","_0":"1","_1":"11","_2":"11","_3":"1"},{"id_pregunta_respondida":"71","numero_control":"14330618","id_pregunta":"12","_0":"1","_1":"12","_2":"12","_3":"1"},{"id_pregunta_respondida":"72","numero_control":"14330618","id_pregunta":"13","_0":"1","_1":"13","_2":"11","_3":"1"},{"id_pregunta_respondida":"73","numero_control":"14330618","id_pregunta":"14","_0":"1","_1":"14","_2":"14","_3":"1"},{"id_pregunta_respondida":"74","numero_control":"14330618","id_pregunta":"15","_0":"1","_1":"15","_2":"15","_3":"4"},{"id_pregunta_respondida":"75","numero_control":"14330618","id_pregunta":"16","_0":"1","_1":"16","_2":"16","_3":"2"},{"id_pregunta_respondida":"76","numero_control":"14330618","id_pregunta":"17","_0":"0","_1":"0","_2":"0","_3":"0"}]
 #lst=[{"id_pregunta_respondida":"60","numero_control":"14330618","id_pregunta":"1","_0":"0","_1":"4","_2":"1","_3":"1"}]

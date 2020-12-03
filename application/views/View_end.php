@@ -4,28 +4,38 @@
 <?php
 
 // $resulado= $this->M_entrevista->get_results($no_control);
-var_dump($r);
-var_dump($r["numero_control"]);
-// foreach ($resulado as $respuesta) {
-//   echo $respuesta->no_control;
-//   echo $respuesta->Vf;
-//   echo $respuesta->Vs;
-//   echo $respuesta->Vp;
-//   echo $respuesta->RVf;
-//   echo $respuesta->RVs;
-//   echo $respuesta->RVp;
-//   echo $respuesta->EVf;
-//   echo $respuesta->EVs;
-//   echo $respuesta->EVp;
-// }
+print_r($r);
+$numero_control = $r['numero_control'];
+$Vf = $r['Vf'];
+// $Vf = 0;
 
 
-// var_dump($array);
-// print_r($array[4]);
+$Vs = $r['Vs'];
+// $Vs = 0;
+
+$Vp = $r['Vp'];
+// $Vp = 0;
+
+$RVf = $r['RVf'];
+// $RVf = 5;
+
+$RVs = $r['RVs'];
+// $RVs = 5;
+
+$RVp = $r['RVp'];
+// $RVp = 5;
+
+$EVf = $r['EVf'];
+// $EVf = 5;
+
+$EVs = $r['EVs'];
+// $EVs = 5;
+
+$EVp = $r['EVp'];
+// $EVp = 5;
+
 
 ?>
-
-
 <html>
 <head>
   <meta charset="utf-8">
@@ -122,10 +132,104 @@ var_dump($r["numero_control"]);
                                 <!-- /.card-header -->
 
         
-                          <?php if ($Vf == 1) { ?>
+
                                 <div class="card-body">
+                                <div class="row">
+                                    <!-- ./col -->
+                                    <?php if ($Vf == 0) { ?>
+
+                                        <!-- /.col -->
+                                        <div class="col-md-12">
+                                          <div class="card bg-gradient-success">
+                                            <div class="card-header">
+                                            <h3 class="card-title">Riesgo de <b>violencia fisica:</b></h3><br>
+
+
+
+
+                                              <div class="card-tools">
+                                               
+                                              </button>
+                                              </div>
+                                              <!-- /.card-tools -->
+                                            </div>
+                                            <!-- /.card-header -->
+                                            <div class="card-body ">
+                                            <h2><b>Nulo</b></h2><br>
+
+                                            </div>
+                                            <!-- /.card-body -->
+                                          </div>
+                                          <!-- /.card -->
+                                        </div>
+                                        <!-- /.col -->
+
+                                    <?php } ?>
+                                    <?php if ($Vf == 1) { ?>
+
+                                        <!-- /.col -->
+                                        <div class="col-md-12">
+                                          <div class="card bg-gradient-warning">
+                                            <div class="card-header">
+                                            <h3 class="card-title">Riesgo de <b>violencia fisica:</b></h3><br>
+
+
+
+
+
+                                              <div class="card-tools">
+                                               
+                                              </button>
+                                              </div>
+                                              <!-- /.card-tools -->
+                                            </div>
+                                            <!-- /.card-header -->
+                                            <div class="card-body ">
+                                            <h2><b>Existente</b></h2><br>
+
+                                            </div>
+                                            <!-- /.card-body -->
+                                          </div>
+                                          <!-- /.card -->
+                                        </div>
+                                        <!-- /.col -->
+
+
+     
+
+                                    <?php } ?>
+
+                                </div>
+                                    <!-- /.row -->
                                     <div class="row">
                                     <!-- ./col -->
+                                    <?php if ($RVf == 0) { ?>
+
+                                  <!-- /.col -->
+                                  <div class="col-md-12">
+                                    <div class="card bg-gradient-gray">
+                                      <div class="card-header">
+                                      <h3 class="card-title">El riesgo de <b>reincidencia</b> de violencia física es:</h3>
+
+
+
+                                        <div class="card-tools">
+                                        
+                                        </button>
+                                        </div>
+                                        <!-- /.card-tools -->
+                                      </div>
+                                      <!-- /.card-header -->
+                                      <div class="card-body ">
+                                      <b>Nulo</b>
+                                      </div>
+                                      <!-- /.card-body -->
+                                    </div>
+                                    <!-- /.card -->
+                                  </div>
+                                  <!-- /.col -->
+
+                                  <?php } ?>
                                     <?php if ($RVf == 1) { ?>
 
                                         <!-- /.col -->
@@ -154,11 +258,14 @@ var_dump($r["numero_control"]);
 
                                     <?php } ?>
                                     <?php if ($RVf == 2) { ?>
+
+
                                         <!-- /.col -->
                                         <div class="col-md-12">
                                           <div class="card bg-gradient-warning">
-                                            <h3 class="card-title">El riesgo de <b>reincidencia</b> de violencia física es:</h3>
                                             <div class="card-header">
+                                            <h3 class="card-title">El riesgo de <b>reincidencia</b> de violencia física es:</h3>
+
 
 
                                               <div class="card-tools">
@@ -168,7 +275,7 @@ var_dump($r["numero_control"]);
                                               <!-- /.card-tools -->
                                             </div>
                                             <!-- /.card-header -->
-                                            <div class="card-body">
+                                            <div class="card-body ">
                                             <b>Moderado</b>
                                             </div>
                                             <!-- /.card-body -->
@@ -176,6 +283,7 @@ var_dump($r["numero_control"]);
                                           <!-- /.card -->
                                         </div>
                                         <!-- /.col -->
+                  
 
                                     <?php } ?>
                                     <?php if ($RVf == 3) { ?>
@@ -235,6 +343,31 @@ var_dump($r["numero_control"]);
                                     <!-- /.row -->
                                     <div class="row">
                                     <!-- ./col -->
+                                    <?php if ($EVf == 0) { ?>
+
+                                  <!-- /.col -->
+                                  <div class="col-md-12">
+                                    <div class="card bg-gradient-gray">
+                                      <div class="card-header">
+                                      <h3 class="card-title">El riesgo de <b>escalabilidad</b> de violencia física es:</h3>
+                                        <div class="card-tools">
+                                        </button>
+                                        </div>
+                                        <!-- /.card-tools -->
+                                      </div>
+                                      <!-- /.card-header -->
+                                      <div class="card-body">
+                                      <b>Nulo</b>
+                                      </div>
+                                      <!-- /.card-body -->
+                                    </div>
+                                    <!-- /.card -->
+                                  </div>
+                                  <!-- /.col -->
+
+
+
+                                  <?php } ?>
                                     <?php if ($EVf == 1) { ?>
 
                                         <!-- /.col -->
@@ -339,44 +472,7 @@ var_dump($r["numero_control"]);
                                 <!-- /.card-body -->
                               </div>
                                 <!-- /.card -->
-                          <?php } else { ?> 
-                            <div class="card-body">
-                                    <div class="row">
-                                    <!-- ./col -->
 
-
-                                        <!-- /.col -->
-                                        <div class="col-md-12">
-                                          <div class="card bg-gradient-gray">
-                                            <div class="card-header">
-                                            <h3 class="card-title"><?php echo  nl2br ("El riesgo de de violencia Fisica \n es: ");?> </h3>
-
-                                              <div class="card-tools">
-                                               
-                                              </button>
-                                              </div>
-                                              <!-- /.card-tools -->
-                                            </div>
-                                            <!-- /.card-header -->
-                                            <div class="card-body ">
-                                            <b>Nulo</b>
-                                            </div>
-                                            <!-- /.card-body -->
-                                            <!-- /.card-body -->
-
-                                          </div>
-                                          </div>
-                                          </div>
-                                          </div>
-
-                                          <!-- /.card -->
-                                          </div>
-                                     
-                                        <!-- /.col -->
-
-
-                                        <!-- /.col -->
-                            <?php } ?>
                             
                             </div>
                             
@@ -398,10 +494,103 @@ var_dump($r["numero_control"]);
                                 <!-- /.card-header -->
 
         
-                          <?php if ($Vp == 1) { ?>
+
                                 <div class="card-body">
-                                    <div class="row">
+                                <div class="row">
                                     <!-- ./col -->
+                                    <?php if ($Vp == 0) { ?>
+
+                                        <!-- /.col -->
+                                        <div class="col-md-12">
+                                          <div class="card bg-gradient-success">
+                                            <div class="card-header">
+                                            <h3 class="card-title">Riesgo de <b>violencia psicologica:</b></h3>
+
+
+
+
+
+                                              <div class="card-tools">
+                                               
+                                              </button>
+                                              </div>
+                                              <!-- /.card-tools -->
+                                            </div>
+                                            <!-- /.card-header -->
+                                            <div class="card-body ">
+                                            <h2><b>Nulo</b></h2><br>
+
+                                            </div>
+                                            <!-- /.card-body -->
+                                          </div>
+                                          <!-- /.card -->
+                                        </div>
+                                        <!-- /.col -->
+
+                                    <?php } ?>
+                                    <?php if ($Vp == 1) { ?>
+                                        <!-- /.col -->
+                                        <div class="col-md-12">
+                                          <div class="card bg-gradient-warning">
+                                            <div class="card-header">
+                                            <h3 class="card-title">Riesgo de <b>violencia psicologica:</b></h3>
+
+
+
+
+                                              <div class="card-tools">
+                                               
+                                              </button>
+                                              </div>
+                                              <!-- /.card-tools -->
+                                            </div>
+                                            <!-- /.card-header -->
+                                            <div class="card-body ">
+                                            <h2><b>Existente</b></h2><br>
+
+                                            </div>
+                                            <!-- /.card-body -->
+                                          </div>
+                                          <!-- /.card -->
+                                        </div>
+                                        <!-- /.col -->
+
+
+     
+
+                                    <?php } ?>
+
+                                </div>
+                                    <!-- /.row -->
+                                <div class="row">
+                                    <!-- ./col -->
+                                    <?php if ($RVp == 0) { ?>
+
+                                    <!-- /.col -->
+                                    <div class="col-md-12">
+                                      <div class="card bg-gradient-gray">
+                                        <div class="card-header">
+                                        <h3 class="card-title">El riesgo de <b>reincidencia</b> de violencia psicológica es:</h3>
+
+
+
+                                          <div class="card-tools">
+                                          
+                                          </button>
+                                          </div>
+                                          <!-- /.card-tools -->
+                                        </div>
+                                        <!-- /.card-header -->
+                                        <div class="card-body ">
+                                        <b>Nulo</b>
+                                        </div>
+                                        <!-- /.card-body -->
+                                      </div>
+                                      <!-- /.card -->
+                                    </div>
+                                    <!-- /.col -->
+
+                                    <?php } ?>
                                     <?php if ($RVp == 1) { ?>
 
                                         <!-- /.col -->
@@ -430,11 +619,14 @@ var_dump($r["numero_control"]);
 
                                     <?php } ?>
                                     <?php if ($RVp == 2) { ?>
-                                        <!-- /.col -->
-                                        <div class="col-md-12">
+
+                                       <!-- /.col -->
+                                       <div class="col-md-12">
                                           <div class="card bg-gradient-warning">
-                                            <h3 class="card-title">El riesgo de <b>reincidencia</b> de violencia psicológica es:</h3>
                                             <div class="card-header">
+                                            <h3 class="card-title">El riesgo de <b>reincidencia</b> de violencia psicológica es:</h3>
+
+
 
 
                                               <div class="card-tools">
@@ -444,7 +636,7 @@ var_dump($r["numero_control"]);
                                               <!-- /.card-tools -->
                                             </div>
                                             <!-- /.card-header -->
-                                            <div class="card-body">
+                                            <div class="card-body ">
                                             <b>Moderado</b>
                                             </div>
                                             <!-- /.card-body -->
@@ -452,6 +644,7 @@ var_dump($r["numero_control"]);
                                           <!-- /.card -->
                                         </div>
                                         <!-- /.col -->
+                                        
 
                                     <?php } ?>
                                     <?php if ($RVp == 3) { ?>
@@ -511,6 +704,30 @@ var_dump($r["numero_control"]);
                                     <!-- /.row -->
                                     <div class="row">
                                     <!-- ./col -->
+                                    <?php if ($EVp == 0) { ?>
+
+<!-- /.col -->
+                                 <div class="col-md-12">
+                                   <div class="card bg-gradient-gray">
+                                     <div class="card-header">
+                                     <h3 class="card-title">El riesgo de <b>escalabilidad</b> de violencia psicológica es:</h3>
+                                       <div class="card-tools">
+                                       </button>
+                                       </div>
+                                       <!-- /.card-tools -->
+                                     </div>
+                                     <!-- /.card-header -->
+                                     <div class="card-body">
+                                     <b>Nulo</b>
+                                     </div>
+                                     <!-- /.card-body -->
+                                   </div>
+                                   <!-- /.card -->
+                                 </div>
+                                 <!-- /.col -->
+
+
+                             <?php } ?>
                                     <?php if ($EVp == 1) { ?>
 
        <!-- /.col -->
@@ -614,43 +831,6 @@ var_dump($r["numero_control"]);
                                 <!-- /.card-body -->
                               </div>
                                 <!-- /.card -->
-                          <?php } else { ?> 
-                            <div class="card-body">
-                                    <div class="row">
-                                    <!-- ./col -->
-
-
-                                        <!-- /.col -->
-                                        <div class="col-md-12">
-                                          <div class="card bg-gradient-gray">
-                                            <div class="card-header">
-                                            <h3 class="card-title">El riesgo de de violencia Psicológica es:</h3>
-
-                                              <div class="card-tools">
-                                               
-                                              </button>
-                                              </div>
-                                              <!-- /.card-tools -->
-                                            </div>
-                                            <!-- /.card-header -->
-                                            <div class="card-body ">
-                                            <b>Nulo</b>
-                                            </div>
-                                            <!-- /.card-body -->
-                                            <!-- /.card-body -->
-
-                                          </div>
-                                          </div>
-                                          </div>
-                                          </div>
-
-                                          <!-- /.card -->
-                                          </div>
-                                     
-                                        <!-- /.col -->
-
-
-                            <?php } ?>
                             
                             </div>
 
@@ -671,10 +851,98 @@ var_dump($r["numero_control"]);
                                 <!-- /.card-header -->
 
         
-                          <?php if ($Vs == 1) { ?>
+
                                 <div class="card-body">
+                                <div class="row">
+                                    <!-- ./col -->
+                                    <?php if ($Vs == 0) { ?>
+                                                                               <!-- /.col -->
+                                        <div class="col-md-12">
+                                          <div class="card bg-gradient-success">
+                                            <div class="card-header">
+                                            <h3 class="card-title">Eiesgo de <b>de violencia sexual:</b></h3>
+
+
+
+
+
+                                              <div class="card-tools">
+                                               
+                                              </button>
+                                              </div>
+                                              <!-- /.card-tools -->
+                                            </div>
+                                            <!-- /.card-header -->
+                                            <div class="card-body">
+                                            <h2><b>Nulo</b></h2><br>
+
+                                            </div>
+                                            <!-- /.card-body -->
+                                          </div>
+                                          <!-- /.card -->
+                                        </div>
+                                        <!-- /.col -->
+
+                                    <?php } ?>
+                                    <?php if ($Vs == 1) { ?>
+                                                                               <!-- /.col -->
+                                        <div class="col-md-12">
+                                          <div class="card bg-gradient-warning">
+                                            <div class="card-header">
+                                            <h3 class="card-title">Eiesgo de <b>de violencia sexual:</b></h3>
+
+
+
+                                              <div class="card-tools">
+                                               
+                                              </button>
+                                              </div>
+                                              <!-- /.card-tools -->
+                                            </div>
+                                            <!-- /.card-header -->
+                                            <div class="card-body">
+                                            <h2><b>Existente</b></h2><br>
+                                            
+
+                                            </div>
+                                            <!-- /.card-body -->
+                                          </div>
+                                          <!-- /.card -->
+                                        </div>
+                                        <!-- /.col -->
+
+                                    <?php } ?>
+                                </div>
+                                    <!-- /.row -->
+
                                     <div class="row">
                                     <!-- ./col -->
+                                    <?php if ($RVs == 0) { ?>
+                                                                               <!-- /.col -->
+                                        <div class="col-md-12">
+                                          <div class="card bg-gradient-gray">
+                                            <div class="card-header">
+                                            <h3 class="card-title">El riesgo de <b>reincidencia</b> de violencia sexual es:</h3>
+
+
+
+                                              <div class="card-tools">
+                                               
+                                              </button>
+                                              </div>
+                                              <!-- /.card-tools -->
+                                            </div>
+                                            <!-- /.card-header -->
+                                            <div class="card-body">
+                                            <b>Nulo</b>
+                                            </div>
+                                            <!-- /.card-body -->
+                                          </div>
+                                          <!-- /.card -->
+                                        </div>
+                                        <!-- /.col -->
+
+                                    <?php } ?>
                                     <?php if ($RVs == 1) { ?>
                                                                                <!-- /.col -->
                                         <div class="col-md-12">
@@ -784,6 +1052,30 @@ var_dump($r["numero_control"]);
                                     <!-- /.row -->
                                     <div class="row">
                                     <!-- ./col -->
+                                    <?php if ($EVs == 0) { ?>
+                                        <!-- /.col -->
+                                        <div class="col-md-12">
+                                          <div class="card bg-gradient-gray">
+                                            <div class="card-header">
+                                            <h3 class="card-title">El riesgo de <b>escalabilidad</b> de violencia sexual es:</h3>
+
+                                              <div class="card-tools">
+                                               
+                                              </button>
+                                              </div>
+                                              <!-- /.card-tools -->
+                                            </div>
+                                            <!-- /.card-header -->
+                                            <div class="card-body">
+                                            <b>Nulo</b>
+                                            </div>
+                                            <!-- /.card-body -->
+                                          </div>
+                                          <!-- /.card -->
+                                        </div>
+                                        <!-- /.col -->
+
+                                    <?php } ?>
                                     <?php if ($EVs == 1) { ?>
                                         <!-- /.col -->
                                         <div class="col-md-12">
@@ -889,43 +1181,7 @@ var_dump($r["numero_control"]);
                                 <!-- /.card-body -->
                               </div>
                                 <!-- /.card -->
-                          <?php } else { ?> 
-                            <div class="card-body">
-                                    <div class="row">
-                                    <!-- ./col -->
-
-
-                                        <!-- /.col -->
-                                        <div class="col-md-12">
-                                          <div class="card bg-gradient-gray">
-                                            <div class="card-header">
-                                            <h3 class="card-title">El riesgo de de violencia Sexual es:</h3>
-
-                                              <div class="card-tools">
-                                               
-                                              </button>
-                                              </div>
-                                              <!-- /.card-tools -->
-                                            </div>
-                                            <!-- /.card-header -->
-                                            <div class="card-body ">
-                                            <b>Nulo</b>
-                                            </div>
-                                            <!-- /.card-body -->
-                                            <!-- /.card-body -->
-
-                                          </div>
-                                          </div>
-                                          </div>
-                                          </div>
-
-                                          <!-- /.card -->
-                                          </div>
-                                     
-                                        <!-- /.col -->
-                                        
-
-                            <?php } ?>
+                          
                             
                             </div>
                             </div>

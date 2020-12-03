@@ -1794,45 +1794,7 @@ public function fin_encuesta($no_control_entrevistado)
 
 		$resulado['r']= $this->M_entrevista->get_results($data);
 
-
-
-		// $array[0] = json_decode(json_encode($resulado), true);
-
-		// var_dump($resulado);
-		// echo "-------------------------------------//////----------------------------";
-		// var_dump($array[0]);
-		// echo "-------------------------------------//////----------------------------";
-
-		// echo $array[1]['Vf'];
-
-	
-		// $data_to_view = array(
-		// 	'numero_control' => array_keys($array, "numero_control"), 
-		// 	'Vf' => array_keys($array, "Vf"), 
-		// 	'Vs' => array_keys($array, "Vs"), 
-		// 	'Vp' => array_keys($array, "Vp"), 
-		// 	'RVf' => array_keys($array, "RVf"), 
-		// 	'RVs' => array_keys($array, "RVs"), 
-		// 	'RVp' => array_keys($array, "RVp"), 
-		// 	'EVf' => array_keys($array, "EVf"), 
-		// 	'EVs' => array_keys($array, "EVs"), 
-		// 	'EVp' => array_keys($array, "EVp"), 
-		// );
-		
-		// $this->load->view('templete/View_sidebar');
-
-// echo $array['Vf'] ;
-
-		// if ($data['EVf'] == "Muy alto") {
-		// 	echo "1";
-		// }
-		// echo $data['Vs'];
-
-
-		// print_r($data_to_view);
-
-
-		// $this->load->view('templete/View_sidebar');
+		$this->load->view('templete/View_sidebar');
 
 		$this->load->view('View_end', $resulado);
 

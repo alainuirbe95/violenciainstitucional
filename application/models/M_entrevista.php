@@ -107,13 +107,12 @@ public function get_pregunta_from_entrevistado($data){
 
 public function get_results($data){
 
-
 	$no_control = $data['no_control'];
+	$query = $this->db->query("SELECT * FROM RESPUESTAS WHERE numero_control = '$no_control';");
+	$h = $query -> row_array();
 
-
-		$query = $this->db->query("SELECT * FROM RESPUESTAS WHERE numero_control = '$no_control';");
-
-	   return $query -> result_array();
+	// var_dump($h['numero_control']);
+	return $h;
 }
 
 

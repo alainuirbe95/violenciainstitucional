@@ -64,7 +64,7 @@ $titulo_pagina = 'Riesgo de Violencia Istitucional';
     <!-- SEARCH FORM -->
     <ul class="navbar-nav ml-auto">
       <li class="nav-item d-none d-sm-inline-block">
-         <a href="<?php echo base_url()?>index.php/Application"> <img src="<?php echo base_url()?>/assets/img/1.png" class="img-circle elevation-0" alt="User Image"> </a>
+         <a href="<?php echo base_url()?>index.php/Encuesta"> <img src="<?php echo base_url()?>/assets/img/1.png" class="img-circle elevation-0" alt="User Image"> </a>
       </li> 
     
     </ul>
