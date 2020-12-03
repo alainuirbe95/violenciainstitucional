@@ -80,7 +80,7 @@ $EVp = $r['EVp'];
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-12">
-          <center> <h1>ENCUESTA DE RIESGO DE VIOENCIA INSTITUCIONAL</h1></center>
+          <center> <h1>ENCUESTA DE RIESGO DE VIOLENCIA INSTITUCIONAL</h1></center>
 
           </div>
           <div class="col-sm-12">
