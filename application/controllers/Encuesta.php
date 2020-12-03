@@ -1773,51 +1773,55 @@ public function fin_encuesta($no_control_entrevistado)
     		"no_control"=> $no_control_entrevistado
 		);
 
+
+
 		$respuestas = $this->M_entrevista->get_todos_from_entrevistado($data);
 
 		$respuestas_entrevistado = json_encode( $respuestas);
 
-		$salida = " ";
-		$output = exec("/usr/bin/python3  /Users/alainalejandro/Downloads/model_test.py ' $respuestas_entrevistado' 2>&1", $salida);
-		// $result = shell_exec('/usr/bin/python3 /Users/alainalejandro/Downloads/model_test.py ' . $respuestas_entrevistado);
-
-
-		// $decoded_output = json_decode($salida);
-		// print_r($_GET['numero_control']);
-		$numero_control = htmlspecialchars($_GET['numero_control']);
-
-		var_dump($numero_control);
-		// var_dump($decoded_output);
-
-
-
+		// $salida = " ";
+		$output = passthru("/usr/local/bin/python3.6 /var/www/html/riesgoinstitucional/application/model_test.py ' $respuestas_entrevistado' 2>&1", $out);
+		sleep(5);
+		redirect('encuesta/get_results/'.$no_control_entrevistado);
 
 	}
 	
-	public function get_results()
+	public function get_results($no_control_entrevistado)
 	{	
+		$data = array(
+    		"no_control"=> $no_control_entrevistado
+		);
 
-		// $data = json_decode(file_get_contents('/Applications/MAMP/htdocs/riesgoinstitucional/application/json.json'), true);
-		$data = json_decode(file_get_contents('php://input'));
-		print_r($data);
+		$resulado['r']= $this->M_entrevista->get_results($data);
 
-		
-		// print_r($_GET['numero_control']);
-		// $numero_control = htmlspecialchars($_GET['numero_control']);
-		// echo $numero_control;
+
+
+		// $array[0] = json_decode(json_encode($resulado), true);
+
+		// var_dump($resulado);
+		// echo "-------------------------------------//////----------------------------";
+		// var_dump($array[0]);
+		// echo "-------------------------------------//////----------------------------";
+
+		// echo $array[1]['Vf'];
+
+	
 		// $data_to_view = array(
-		// 	'numero_control' => $_POST['numero_control'], 
-		// 	'Vf' => $_POST['Vf'], 
-		// 	'Vs' => $_POST['Vs'], 
-		// 	'Vp' => $_POST['Vp'], 
-		// 	'RVf' => $_POST['RVf'], 
-		// 	'RVs' => $_POST['RVs'], 
-		// 	'RVp' => $_POST['RVp'], 
-		// 	'EVf' => $_POST['EVf'], 
-		// 	'EVs' => $_POST['EVs'], 
-		// 	'EVp' => $_POST['EVp'], 
+		// 	'numero_control' => array_keys($array, "numero_control"), 
+		// 	'Vf' => array_keys($array, "Vf"), 
+		// 	'Vs' => array_keys($array, "Vs"), 
+		// 	'Vp' => array_keys($array, "Vp"), 
+		// 	'RVf' => array_keys($array, "RVf"), 
+		// 	'RVs' => array_keys($array, "RVs"), 
+		// 	'RVp' => array_keys($array, "RVp"), 
+		// 	'EVf' => array_keys($array, "EVf"), 
+		// 	'EVs' => array_keys($array, "EVs"), 
+		// 	'EVp' => array_keys($array, "EVp"), 
 		// );
-		// $this->load->view('templete/View_sidebar', $data_to_view);
+		
+		// $this->load->view('templete/View_sidebar');
+
+// echo $array['Vf'] ;
 
 		// if ($data['EVf'] == "Muy alto") {
 		// 	echo "1";
@@ -1830,7 +1834,7 @@ public function fin_encuesta($no_control_entrevistado)
 
 		// $this->load->view('templete/View_sidebar');
 
-		// $this->load->view('View_end', $data_to_view);
+		$this->load->view('View_end', $resulado);
 
 
 		// print_r( $data_to_view);

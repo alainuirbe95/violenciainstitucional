@@ -1,5 +1,7 @@
 import json, sys, requests
-# import http.client, urllib
+import mysql.connector
+from mysql.connector import (connection)
+from mysql.connector import errorcode
 
 
 def clasificador_violencia(num_preg,ocurrio):
@@ -179,8 +181,33 @@ def ponderacion_escalabilidad(num_preg, ocurrio, agresor_x,lugar_x,frecuencia_x)
     sum_pond_e_vp=sum(pond_e_vp)
     return(sum_pond_e_vf,sum_pond_e_vs,sum_pond_e_vp)
 
-lst =  json.loads(sys.argv[1])
-# [{"id_pregunta_respondida":"60","numero_control":"14330618","id_pregunta":"1","_0":"1","_1":"1","_2":"1","_3":"1"},{"id_pregunta_respondida":"61","numero_control":"14330618","id_pregunta":"2","_0":"1","_1":"2","_2":"2","_3":"2"},{"id_pregunta_respondida":"62","numero_control":"14330618","id_pregunta":"3","_0":"1","_1":"3","_2":"3","_3":"3"},{"id_pregunta_respondida":"63","numero_control":"14330618","id_pregunta":"4","_0":"1","_1":"4","_2":"4","_3":"4"},{"id_pregunta_respondida":"64","numero_control":"14330618","id_pregunta":"5","_0":"1","_1":"5","_2":"5","_3":"5"},{"id_pregunta_respondida":"65","numero_control":"14330618","id_pregunta":"6","_0":"1","_1":"6","_2":"6","_3":"6"},{"id_pregunta_respondida":"66","numero_control":"14330618","id_pregunta":"7","_0":"1","_1":"7","_2":"7","_3":"7"},{"id_pregunta_respondida":"67","numero_control":"14330618","id_pregunta":"8","_0":"1","_1":"8","_2":"8","_3":"1"},{"id_pregunta_respondida":"68","numero_control":"14330618","id_pregunta":"9","_0":"1","_1":"9","_2":"9","_3":"1"},{"id_pregunta_respondida":"69","numero_control":"14330618","id_pregunta":"10","_0":"1","_1":"10","_2":"10","_3":"1"},{"id_pregunta_respondida":"70","numero_control":"14330618","id_pregunta":"11","_0":"1","_1":"11","_2":"11","_3":"1"},{"id_pregunta_respondida":"71","numero_control":"14330618","id_pregunta":"12","_0":"1","_1":"12","_2":"12","_3":"1"},{"id_pregunta_respondida":"72","numero_control":"14330618","id_pregunta":"13","_0":"1","_1":"13","_2":"11","_3":"1"},{"id_pregunta_respondida":"73","numero_control":"14330618","id_pregunta":"14","_0":"1","_1":"14","_2":"14","_3":"1"},{"id_pregunta_respondida":"74","numero_control":"14330618","id_pregunta":"15","_0":"1","_1":"15","_2":"15","_3":"4"},{"id_pregunta_respondida":"75","numero_control":"14330618","id_pregunta":"16","_0":"1","_1":"16","_2":"16","_3":"2"},{"id_pregunta_respondida":"76","numero_control":"14330618","id_pregunta":"17","_0":"0","_1":"0","_2":"0","_3":"0"}]
+def enviar_resultado(result):
+    cnx = connection.MySQLConnection(user='admin', password='admin', host='localhost', database='riesgoinstitucional')
+    try:
+        cnx 
+    except mysql.connector.Error as err:
+        if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+            print("Something is wrong with your user name or password")
+        elif err.errno == errorcode.ER_BAD_DB_ERROR:
+            print("Database does not exist")
+        else:
+            print(err)
+
+    # print(result.keys())
+    # print(result.values())
+
+    mycursor = cnx.cursor()
+
+    qmarks =', '.join([ '%s']* len(result))
+    columns=', '.join(result.keys())
+    qry = "Insert Into RESPUESTAS (%s) Values (%s)" % (columns, qmarks)
+    mycursor.execute(qry, list(result.values()))
+    cnx.commit()
+
+    mycursor.close()
+    cnx.close()
+lst = json.loads(sys.argv[1])
+# lst = [{"id_pregunta_respondida":"60","numero_control":"14330618","id_pregunta":"1","_0":"1","_1":"1","_2":"1","_3":"1"},{"id_pregunta_respondida":"61","numero_control":"14330618","id_pregunta":"2","_0":"1","_1":"2","_2":"2","_3":"2"},{"id_pregunta_respondida":"62","numero_control":"14330618","id_pregunta":"3","_0":"1","_1":"3","_2":"3","_3":"3"},{"id_pregunta_respondida":"63","numero_control":"14330618","id_pregunta":"4","_0":"1","_1":"4","_2":"4","_3":"4"},{"id_pregunta_respondida":"64","numero_control":"14330618","id_pregunta":"5","_0":"1","_1":"5","_2":"5","_3":"5"},{"id_pregunta_respondida":"65","numero_control":"14330618","id_pregunta":"6","_0":"1","_1":"6","_2":"6","_3":"6"},{"id_pregunta_respondida":"66","numero_control":"14330618","id_pregunta":"7","_0":"1","_1":"7","_2":"7","_3":"7"},{"id_pregunta_respondida":"67","numero_control":"14330618","id_pregunta":"8","_0":"1","_1":"8","_2":"8","_3":"1"},{"id_pregunta_respondida":"68","numero_control":"14330618","id_pregunta":"9","_0":"1","_1":"9","_2":"9","_3":"1"},{"id_pregunta_respondida":"69","numero_control":"14330618","id_pregunta":"10","_0":"1","_1":"10","_2":"10","_3":"1"},{"id_pregunta_respondida":"70","numero_control":"14330618","id_pregunta":"11","_0":"1","_1":"11","_2":"11","_3":"1"},{"id_pregunta_respondida":"71","numero_control":"14330618","id_pregunta":"12","_0":"1","_1":"12","_2":"12","_3":"1"},{"id_pregunta_respondida":"72","numero_control":"14330618","id_pregunta":"13","_0":"1","_1":"13","_2":"11","_3":"1"},{"id_pregunta_respondida":"73","numero_control":"14330618","id_pregunta":"14","_0":"1","_1":"14","_2":"14","_3":"1"},{"id_pregunta_respondida":"74","numero_control":"14330618","id_pregunta":"15","_0":"1","_1":"15","_2":"15","_3":"4"},{"id_pregunta_respondida":"75","numero_control":"14330618","id_pregunta":"16","_0":"1","_1":"16","_2":"16","_3":"2"},{"id_pregunta_respondida":"76","numero_control":"14330618","id_pregunta":"17","_0":"0","_1":"0","_2":"0","_3":"0"}]
 #lst=[{"id_pregunta_respondida":"60","numero_control":"14330618","id_pregunta":"1","_0":"0","_1":"4","_2":"1","_3":"1"}]
 pond_r_vf=[]
 pond_r_vs=[]
@@ -252,17 +279,9 @@ else:
     Vp=0
 result={'numero_control':n_control,'Vf':Vf,'Vs':Vs,'Vp':Vp,'RVf':nivel[0],'RVs':nivel[1],'RVp':nivel[2],'EVf':nivel[3],'EVs':nivel[4],'EVp':nivel[5]}  
 
-json_string=json.dumps(result)
-print(json_string)
-# print (result)
-
-
-
-# url = "/Applications/MAMP/htdocs/riesgoinstitucional/application/respuestas.php"
-# headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
-
-# r = requests.post(url, json=result)
-# print(r.text)
+enviar_resultado(result)
+# json_string=json.dumps(result)
+# print(json_string)
 
 # print(sum(pond_r_vf))
 # print(sum(pond_r_vs))

@@ -1,6 +1,30 @@
            
 <!DOCTYPE html>
 <?php date_default_timezone_set("America/Phoenix"); ?>
+<?php
+
+// $resulado= $this->M_entrevista->get_results($no_control);
+var_dump($r);
+var_dump($r["numero_control"]);
+// foreach ($resulado as $respuesta) {
+//   echo $respuesta->no_control;
+//   echo $respuesta->Vf;
+//   echo $respuesta->Vs;
+//   echo $respuesta->Vp;
+//   echo $respuesta->RVf;
+//   echo $respuesta->RVs;
+//   echo $respuesta->RVp;
+//   echo $respuesta->EVf;
+//   echo $respuesta->EVs;
+//   echo $respuesta->EVp;
+// }
+
+
+// var_dump($array);
+// print_r($array[4]);
+
+?>
+
 
 <html>
 <head>
